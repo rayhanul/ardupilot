@@ -151,7 +151,7 @@ BUILD_OPTIONS = [
     Feature('Copter', 'MODE_ZIGZAG', 'MODE_ZIGZAG_ENABLED', 'Enable Mode ZigZag', 0, None),
     Feature('Copter', 'MODE_SYSTEMID', 'MODE_SYSTEMID_ENABLED', 'Enable Mode SystemID', 0, 'Logging'),
     Feature('Copter', 'MODE_SPORT', 'MODE_SPORT_ENABLED', 'Enable Mode Sport', 0, None),
-    Feature('Copter', 'MODE_FOLLOW', 'MODE_FOLLOW_ENABLED', 'Enable Mode Follow', 0, 'AC_AVOID'),
+    Feature('Copter', 'MODE_FOLLOW', 'MODE_FOLLOW_ENABLED', 'Enable Mode Follow', 0, 'AC_AVOID,AP_FOLLOW'),
     Feature('Copter', 'MODE_TURTLE', 'MODE_TURTLE_ENABLED', 'Enable Mode Turtle', 0, None),
     Feature('Copter', 'MODE_GUIDED_NOGPS', 'MODE_GUIDED_NOGPS_ENABLED', 'Enable Mode Guided NoGPS', 0, None),
     Feature('Copter', 'MODE_FLOWHOLD', 'MODE_FLOWHOLD_ENABLED', 'Enable Mode Flowhold', 0, "OPTICALFLOW"),
@@ -283,6 +283,7 @@ BUILD_OPTIONS = [
     Feature('Rangefinder', 'RANGEFINDER_VL53L1X', 'AP_RANGEFINDER_VL53L1X_ENABLED', "Enable Rangefinder - VL53L1X", 0, "RANGEFINDER"),   # NOQA: E501
     Feature('Rangefinder', 'RANGEFINDER_WASP', 'AP_RANGEFINDER_WASP_ENABLED', "Enable Rangefinder - Wasp", 0, "RANGEFINDER"),   # NOQA: E501
     Feature('Rangefinder', 'RANGEFINDER_RDS02UF', 'AP_RANGEFINDER_RDS02UF_ENABLED', "Enable Rangefinder - RDS02UF", 0, "RANGEFINDER"),   # NOQA: E501
+    Feature('Rangefinder', 'RANGEFINDER_HEXSOONRADAR', 'AP_RANGEFINDER_HEXSOONRADAR_ENABLED', "Enable Rangefinder - Hexsoon Radar", 0, "RANGEFINDER"),   # NOQA: E501
 
     Feature('Sensors', 'OPTICALFLOW', 'AP_OPTICALFLOW_ENABLED', 'Enable Optical Flow', 0, None),
     Feature('Sensors', 'OPTICALFLOW_CXOF', 'AP_OPTICALFLOW_CXOF_ENABLED', 'Enable Optical flow CXOF Sensor', 0, "OPTICALFLOW"),
@@ -383,6 +384,7 @@ BUILD_OPTIONS = [
     Feature('MAVLink', 'AP_MAVLINK_FTP_ENABLED', 'AP_MAVLINK_FTP_ENABLED', 'Enable MAVLink FTP protocol', 0, None),  # noqa
     Feature('MAVLink', 'MAV_CMD_SET_HAGL', 'AP_MAVLINK_MAV_CMD_SET_HAGL_ENABLED', 'Enable MAVLink HAGL command', 0, None),  # noqa
     Feature('MAVLink', 'VIDEO_STREAM_INFORMATION', 'AP_MAVLINK_MSG_VIDEO_STREAM_INFORMATION_ENABLED', 'Enable MAVLink VIDEO_STREAM_INFORMATION message', 0, "Camera"), # noqa
+    Feature('Other', 'AP_FOLLOW', 'AP_FOLLOW_ENABLED', 'Enable Follow library', 0, None),
 
     Feature('Developer', 'KILL_IMU', 'AP_INERTIALSENSOR_KILL_IMU_ENABLED', 'Allow IMUs to be disabled at runtime', 0, None),
     Feature('Developer', 'CRASHCATCHER', 'AP_CRASHDUMP_ENABLED', 'Enable CrashCatcher', 0, None),
