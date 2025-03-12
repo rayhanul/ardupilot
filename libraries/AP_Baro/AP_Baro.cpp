@@ -57,8 +57,8 @@
 #include <AP_GPS/AP_GPS.h>
 #include <AP_Vehicle/AP_Vehicle.h>
 
-#include <iostream>
-#include <fstream>
+// #include <iostream>
+// #include <fstream>
 
 #define INTERNAL_TEMPERATURE_CLAMP 35.0f
 
@@ -257,6 +257,7 @@ const AP_Param::GroupInfo AP_Baro::var_info[] = {
     AP_GROUPINFO("_OPTIONS", 24, AP_Baro, _options, 0),
 #endif
 
+    //  https://ardupilot.org/dev/docs/code-overview-adding-a-new-parameter.html#adding-a-new-parameter-to-copter
     // @Param: _FAIL
     // @DisplayName: Baro params
     // @Description: Enable/disable BARO_FAIL
