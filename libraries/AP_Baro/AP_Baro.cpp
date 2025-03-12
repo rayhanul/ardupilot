@@ -57,6 +57,9 @@
 #include <AP_GPS/AP_GPS.h>
 #include <AP_Vehicle/AP_Vehicle.h>
 
+#include <iostream>
+#include <fstream>
+
 #define INTERNAL_TEMPERATURE_CLAMP 35.0f
 
 #ifndef HAL_BARO_FILTER_DEFAULT
@@ -253,6 +256,13 @@ const AP_Param::GroupInfo AP_Baro::var_info[] = {
     // @User: Advanced
     AP_GROUPINFO("_OPTIONS", 24, AP_Baro, _options, 0),
 #endif
+
+    // @Param: _FAIL
+    // @DisplayName: Baro params
+    // @Description: Enable/disable BARO_FAIL
+    // @Bitmask: 0:
+    // @User: Advanced
+    AP_GROUPINFO("_FAIL", 25, AP_Baro, _baro_fail, 0),
     
     AP_GROUPEND
 };
@@ -266,7 +276,7 @@ AP_Baro *AP_Baro::_singleton;
 AP_Baro::AP_Baro()
 {
     _singleton = this;
-
+    _baro_fail.set(0); 
     AP_Param::setup_object_defaults(this, var_info);
     _field_elevation_active = _field_elevation;
 }
@@ -842,6 +852,34 @@ bool AP_Baro::should_log() const
 void AP_Baro::update(void)
 {
     WITH_SEMAPHORE(_rsem);
+
+    // std::ofstream outFile("/home/rayhan/Documents/GitHub/Baro_fail_output.txt");
+
+    // Write to the file
+    // outFile << "File created!";
+
+  // Close the file
+
+
+    if (_baro_fail.get() == 1) {
+
+        // outFile << "Baro found";
+        // disable all barometer sensors if baro_fail is set to 1 
+        for (uint8_t i = 0; i < _num_sensors; i++) {
+            sensors[i].healthy = false;
+            sensors[i].alt_ok = false;
+            sensors[i].calibrated = false;
+        }
+        return;  
+    }else{
+        for (uint8_t i = 0; i < _num_sensors; i++) {
+            sensors[i].healthy = true;
+            sensors[i].alt_ok = true;
+            sensors[i].calibrated = true;
+        }
+    }
+    
+    // outFile.close();
 
     if (fabsf(_alt_offset - _alt_offset_active) > 0.01f) {
         // If there's more than 1cm difference then slowly slew to it via LPF.

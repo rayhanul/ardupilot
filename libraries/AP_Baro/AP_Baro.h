@@ -33,6 +33,8 @@ class AP_Baro
 public:
     AP_Baro();
 
+    AP_Int8 _baro_fail ;
+
     /* Do not allow copies */
     CLASS_NO_COPY(AP_Baro);
 
